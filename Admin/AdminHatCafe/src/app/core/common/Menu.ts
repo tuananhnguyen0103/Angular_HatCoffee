@@ -20,7 +20,7 @@ export class Menu{
                 },
                 {
                     name: "Cập nhật danh mục",
-                    route: "/main/category/update",
+                    route: "/main/category/index",
                 },
             ]
         },  

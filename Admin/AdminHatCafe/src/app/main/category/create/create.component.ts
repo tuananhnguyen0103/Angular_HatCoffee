@@ -18,6 +18,8 @@ export class CreateComponent implements OnInit {
     $:any = document.querySelector.bind(document)
     categories:any = [];
     imageSrc: any;
+    show = false;
+    done = false;
     constructor(
       private dataService:DataService,
       private route:Router,
@@ -36,8 +38,6 @@ export class CreateComponent implements OnInit {
         })
         this.validate()
     }
-    
-    
       // validate form
     validate() {
         Validator({
@@ -51,14 +51,14 @@ export class CreateComponent implements OnInit {
           onSubmit: (categories: any) => {
             categories={
               categories_slug:this.utilityService.makeSeoTitle(categories.categories_name),
-              categrories_images:"",
+              categories_images:this.imageSrc,
               ...categories
             }
-            // console.log(categories);
-            // this.dataService.POST('api/Categories/create-item',categories).subscribe((res:any)=>{
-            //   this.notification.alertSuccessMS("thông báo",'Bạn đã thêm thành công .')
-            //   this.route.navigate(['/main/category/index'])
-            // },err=>this.notification.alertErrorMS("Thông báo",'có lỗi xảy ra vui lòng thử lại'))
+            console.log(categories);
+            this.dataService.POST('api/Categories/create-item',categories).subscribe((res:any)=>{
+              this.notification.alertSuccessMS("thông báo",'Bạn đã thêm thành công .')
+              this.route.navigate(['/main/category/index'])
+            },err=>this.notification.alertErrorMS("Thông báo",'có lỗi xảy ra vui lòng thử lại'))
           }
         })
     }
@@ -85,21 +85,26 @@ export class CreateComponent implements OnInit {
         $('#select_category').html(buildMenu(categories, ''))
     }
     readURL(event: any) {
-      console.log(event);
+      // console.log(event);
       if (event.target.files && event.target.files[0]) {
           const file = event.target.files[0];
-          console.log(file);
-     
+          // console.log(file);
+          this.show = true;
+          this.done = false;
           // console.log(event.target.files[0].webkitRelativePath);
           const reader = new FileReader();
           reader.onload = e => this.imageSrc = reader.result;
   
           reader.readAsDataURL(file);
 
-          console.log(file);
-          this.imgurService.CallAPI(file).subscribe(res =>{
-            console.log(res)
-          },(err: HttpErrorResponse) =>{
+          // console.log(file);
+          this.imgurService.upload(file).subscribe((res:any) =>{
+            console.log(res.data.image.url)
+            this.imageSrc = res.data.image.url
+            this.done = true;
+            this.show = false;
+            console.log(this.imageSrc);
+          },(err) =>{
             console.log(err)
           });
       }

@@ -25,14 +25,14 @@ export class MainComponent implements OnInit {
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
       this.currentUrl = event.url
-      console.log(this.currentUrl);
+      // console.log(this.currentUrl);
     });
   }
 
   menus:any = Menu.menus
   currentUrl:any
   ngOnInit(): void {
-    console.log(this.menus);
+    // console.log(this.menus);
   }
 
   ngAfterViewInit() {

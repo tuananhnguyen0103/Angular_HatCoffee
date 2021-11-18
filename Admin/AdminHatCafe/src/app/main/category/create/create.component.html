@@ -31,12 +31,12 @@
                         </div>
                     </div>
                     <div>
-                        <input type='file' (change)="readURL($event);" />
+                        <input type='file' #file (change)="readURL($event);" />
                         <img id="blah" [src]="imageSrc || 'http://placehold.it/180'" alt="your image" />
                     </div>
                     <hr>
                     <button (click)="backPage()" type="button" class="btn btn-danger mr-4">Thoát</button>
-                    <button  class="btn btn-info ">
+                    <button [disabled]="!done"class="btn btn-info ">
                         Lưu thông tin
                     </button>
                         
@@ -47,4 +47,9 @@
 
     </div>
 </section>
+<div class="spin-loader-screen" *ngIf="show">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+</div>
 

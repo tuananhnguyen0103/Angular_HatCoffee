@@ -3,36 +3,40 @@
 
         <section class="panel panel-default">
             <div style="text-align: center; padding: 20px 0" class="panel-heading">
-                <h3 class="panel-title mg-auto font-italic"><u>Cập nhật thông tin</u></h3>
+                <h3 class="panel-title mg-auto font-italic"><u>Nhập thông tin</u></h3>
             </div>
             <div class="panel-body">
                 <form  id="form-1" class="form-horizontal" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="name" class="col-sm-3 control-label">Tên Danh Mục:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" [(ngModel)]="name_category" id="name" name ="categories_name"placeholder="Nhập tên...">
+                            <input type="text" class="form-control" id="name" [(ngModel)]="categories_name" name ="categories_name"placeholder="Nhập tên...">
                             <label class="text-danger form-message ml-2 mt-2"></label>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name" class="col-sm-3 control-label">Miêu tả:</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control"  id="desc" [(ngModel)]="desc_category" name ="categories_description" placeholder="Nhập ...">
+                            <input type="text" class="form-control" id="desc" [(ngModel)]="categories_descriptions" name ="categories_descriptions"placeholder="Nhập ...">
                             <label class="text-danger form-message ml-2 mt-2"></label>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="tech" class="col-sm-3 control-label">Danh mục cha:</label>
                         <div class="col-sm-3">
-                            <select id="select_category" [(ngModel)]="id_parent" name="categories_parent_id" class="form-control">
+                            <select id="select_category" name="categories_parent_id" class="form-control">
 
                             </select>
                             <label class="text-danger form-message ml-2 mt-2"></label>
                         </div>
                     </div>
+                    <div>
+                        <input type='file' #file (change)="readURL($event);" />
+                        <img id="blah" [src]="imageSrc || 'http://placehold.it/180'" alt="your image" />
+                    </div>
                     <hr>
                     <button (click)="backPage()" type="button" class="btn btn-danger mr-4">Thoát</button>
-                    <button  class="btn btn-info ">
+                    <button [disabled]="!done"class="btn btn-info ">
                         Lưu thông tin
                     </button>
                         
@@ -43,3 +47,9 @@
 
     </div>
 </section>
+
+<div class="spin-loader-screen" *ngIf="show">
+    <div class="spinner-border" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+</div>

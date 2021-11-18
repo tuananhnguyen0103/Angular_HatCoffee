@@ -3,6 +3,7 @@ import { DataService } from 'src/app/core/services/data.service'
 import {Router,ActivatedRoute} from '@angular/router'
 import { NotificationService } from 'src/app/core/services/notification.service'
 import { UtilityService } from 'src/app/core/services/utility.service';
+import {ImgurApiService} from 'src/app/core/services/imgur-api.service';
 
 declare const Validator:any, $:any;
 @Component({
@@ -11,10 +12,12 @@ declare const Validator:any, $:any;
   styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
-
+  imageSrc: any;
+  done = false;
+  show = false;
   category:any = {};
-  name_category:any;
-  desc_category:any;
+  categories_name:any;
+  categories_descriptions:any;
   id_parent:any;
   currentId=this.router.snapshot.paramMap.get('id')
   currentSlug=this.router.snapshot.paramMap.get('categories_slug')
@@ -26,6 +29,7 @@ export class UpdateComponent implements OnInit {
       private router: ActivatedRoute,
       private notification :NotificationService,
       private utilityService:UtilityService,
+      private imgurService: ImgurApiService
     ) { }
     backPage(){
         this.route.navigate(['/main/category/index'])
@@ -40,8 +44,9 @@ export class UpdateComponent implements OnInit {
       (res:any)=>{
         console.log(res)
         this.categories =res
-        this.name_category = res.categories_name
-        this.desc_category = res.categories_descriptions
+        this.categories_descriptions = res.categories_descriptions
+        this.categories_name = res.categories_name
+        this.imageSrc = res.categories_images
         this.dataService.GET('api/Categories/get-item').subscribe(
           (data:any) =>{
           this.renderMenu(data)
@@ -65,14 +70,13 @@ export class UpdateComponent implements OnInit {
               categories={
                 categories_id : this.currentId,
                 categories_slug:this.utilityService.makeSeoTitle(categories.categories_name),
-                categrories_images:"",
-                categories_descriptions:this.desc_category,
+                categories_images:this.imageSrc,
                 ...categories
               }
               console.log(categories);
               this.dataService.PUT('api/Categories/update-item',categories).subscribe((res:any)=>{
                 this.notification.alertSuccessMS("thông báo",'Bạn đã cập nhật thành công .')
-                // this.route.navigate(['/main/category/index'])
+                this.route.navigate(['/main/category/index'])
               },err=>this.notification.alertErrorMS("Thông báo",'có lỗi xảy ra vui lòng thử lại'))
             }
           })
@@ -99,4 +103,29 @@ export class UpdateComponent implements OnInit {
           // categories = categories.filter((val: any) => val.parentId == 0)
           $('#select_category').html(buildMenu(categories, ''))
   }
+  readURL(event: any) {
+    // console.log(event);
+    if (event.target.files && event.target.files[0]) {
+        const file = event.target.files[0];
+        // console.log(file);
+        this.show = true;
+        this.done = false;
+        // console.log(event.target.files[0].webkitRelativePath);
+        const reader = new FileReader();
+        reader.onload = e => this.imageSrc = reader.result;
+
+        reader.readAsDataURL(file);
+
+        // console.log(file);
+        this.imgurService.upload(file).subscribe((res:any) =>{
+          console.log(res.data.image.url)
+          this.imageSrc = res.data.image.url
+          this.done = true;
+          this.show = false;
+          console.log(this.imageSrc);
+        },(err) =>{
+          console.log(err)
+        });
+    }
+}
 }

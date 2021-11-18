@@ -27,26 +27,24 @@ export class IndexComponent implements OnInit {
   collection: any[] = [];
   search(value: any) {
     var arr: any = []
+    console.log(value.value);
     this.records.forEach((e: any) => {
-      if (e.name.toLowerCase().match(value.value.toLowerCase())) {
+      if (e.categories_name.toLowerCase().match(value.value.toLowerCase())) {
         arr.push(e)
       }
     })
     this.collection = arr
-    this.collection = arr.map((e:any,i:any)=>{
+    this.collection = arr.map((category:any,i:any)=>{
       /*
         e : là từng bản ghi qua mỗi lần lặp, 
         i là index của từng bản ghi
 
         !map parameter
       */
-      return {
-        index : i,
-        categories_id: e.categories_id,
-        categories_slug : e.categories_slug,
-        categories_name: e.categories_name,
-        categories_parent_id: e.categories_parent_id,
-      }
+        return {
+              index: i,
+             ...category
+            }
     })
     // this.collection =this.collection.map((category: any, i: any) => {
         //   return {
