@@ -11,6 +11,10 @@ const routes: Routes = [
 //   // path: 'index',
 //   // loadChildren: () => import('./pages/index/index.module').then(m => m.IndexComponent)
 // },
+{
+  path:"",
+  component : IndexComponent,
+},
   {
     path:"index",
     component : IndexComponent,
