@@ -15,6 +15,7 @@ export class UpdateComponent implements OnInit {
   imageSrc: any;
   done = false;
   show = false;
+  
   category:any = {};
   categories_name:any;
   categories_descriptions:any;
@@ -127,5 +128,5 @@ export class UpdateComponent implements OnInit {
           console.log(err)
         });
     }
-}
+  }
 }

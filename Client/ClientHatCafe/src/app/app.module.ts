@@ -10,6 +10,8 @@ import { MenuComponent } from './pages/menu/menu.component';
 import { ProductComponent } from './pages/product/product.component';
 import { PagesComponent } from './pages/pages.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ReactiveFormsModule, FormGroup ,FormsModule } from '@angular/forms';
+import { CheckoutComponent } from './pages/user/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -20,12 +22,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MenuComponent,
     ProductComponent,
     PagesComponent,
+    CheckoutComponent
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
     AppRoutingModule,
-    NgxPaginationModule 
+    NgxPaginationModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

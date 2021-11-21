@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DataService } from 'src/app/core/services/data.service';
+import { CartService } from 'src/app/core/services/cart.service';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -10,11 +11,15 @@ export class IndexComponent implements OnInit {
 
   constructor(
     private dataService:DataService,
+    private cartService:CartService
+
   ) { }
   numberPages: number = 1;
   collection: any[] = [];
+  itemCart: any;
   ngOnInit(): void {
     this.getData();
+    console.log(this.cartService.CheckCart());
   }
   getData(){
     return this.dataService.GET('api/Product/get-item').subscribe(
@@ -25,5 +30,16 @@ export class IndexComponent implements OnInit {
   }
   handlePageChange(event) {
     this.numberPages = event;
+  }
+  addToCart(item:any){
+    this.itemCart = {
+      id : item.product_id,
+      name: item.product_name,
+      quantity: 1,
+      prices: item.product_prices,
+      total : item.product_prices,
+      images: item.product_image
+    }
+    this.cartService.AddToCart(this.itemCart);
   }
 }

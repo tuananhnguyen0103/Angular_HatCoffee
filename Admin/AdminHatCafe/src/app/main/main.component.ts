@@ -24,15 +24,20 @@ export class MainComponent implements OnInit {
     router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {
+      console.log(event)
       this.currentUrl = event.url
       // console.log(this.currentUrl);
-    });
+    },(s:any)=>{
+      console.log(s)
+    }
+    );
   }
 
   menus:any = Menu.menus
   currentUrl:any
   ngOnInit(): void {
-    // console.log(this.menus);
+    console.log(this.menus);
+    console.log(this.currentUrl);
   }
 
   ngAfterViewInit() {

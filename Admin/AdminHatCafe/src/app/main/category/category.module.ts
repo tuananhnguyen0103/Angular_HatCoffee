@@ -21,6 +21,6 @@ import { ImgurApiService }from 'src/app/core/services/imgur-api.service';
     NgxPaginationModule,
     FormsModule
   ],
-  providers: [ImgurApiService]
+  
 })
 export class CategoryModule { }

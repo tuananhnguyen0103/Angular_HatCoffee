@@ -6,7 +6,7 @@
  *****************************************************
  */
 $(window).on("load", function() {
-
+    
     "use strict";
 
     var preLoader = $('.preloader');

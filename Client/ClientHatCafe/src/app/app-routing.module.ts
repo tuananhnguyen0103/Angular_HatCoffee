@@ -28,6 +28,10 @@ const routes: Routes = [
     component : ProductComponent,
   },
   {
+    path:"product/:product_slug",
+    component : ProductComponent,
+  },
+  {
     path:"cart",
     component : CartComponent,
   },{

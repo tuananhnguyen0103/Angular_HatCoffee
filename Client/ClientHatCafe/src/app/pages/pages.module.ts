@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { CartComponent } from './user/cart/cart.component';
-import { CheckoutComponent } from './user/checkout/checkout.component';
+// import { CheckoutComponent } from './user/checkout/checkout.component';
 // import { NgxPaginationModule } from 'ngx-pagination';
 // import { MenuComponent } from './menu/menu.component';
 
@@ -11,7 +11,7 @@ import { CheckoutComponent } from './user/checkout/checkout.component';
 @NgModule({
   declarations: [
     CartComponent,
-    CheckoutComponent
+    // CheckoutComponent
   ],
   imports: [
     CommonModule,

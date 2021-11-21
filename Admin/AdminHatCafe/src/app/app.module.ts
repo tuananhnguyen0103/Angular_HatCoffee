@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
-
+import { ImgurApiService }from 'src/app/core/services/imgur-api.service';
 
 
 @NgModule({
@@ -26,7 +26,7 @@ import { FormsModule } from '@angular/forms';
     NgxPaginationModule,
     FormsModule
   ],
-  providers: [],
+  providers:[ImgurApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

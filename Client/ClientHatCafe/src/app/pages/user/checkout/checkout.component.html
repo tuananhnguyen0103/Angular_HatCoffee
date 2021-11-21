@@ -23,8 +23,8 @@
             <div class="container">
                 <div class="row pad-s15">
                     <!--//==Billings and Shipping Form Start==//-->	
-                    <form class="contact-form">
-                        <div class="col-sm-6 col-md-6 wv_checkout_left marT30">
+                    <form class="contact-form" [formGroup]="dataService.form">
+                        <div class="col-sm-12 col-md-12 wv_checkout_left marT30">
                             <!--//== Section Heading Start ==//-->
                             <div class="left-title">
                                 <h2>Billings details <span class="heading-border"></span></h2>
@@ -34,95 +34,27 @@
                             <!--//==Billings Form Start==//-->	
                             <div class="row">
                                 <!--//==Billings Input Field==//-->
-                                <div class="col-md-6 form-group">
-                                    <input class="wv_form_focus" type="text" placeholder="First Name:">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input class="wv_form_focus" type="text" placeholder="Last Name:">
-                                </div>
                                 <div class="col-md-12 form-group">
-                                    <input class="wv_form_focus" type="text" placeholder="Company Name:">
-                                </div>
-                                <!--//==Billings Input Field==//-->
-                                <div class="col-md-6 form-group">
-                                    <input class="wv_form_focus" type="email" id="exampleInputEmail" placeholder="Email:">
-                                </div>
-                                <div class="col-md-6 form-group">
-                                    <input class="wv_form_focus" type="number" placeholder="Phone Number:">
+                                    <input formControlName='name' class="wv_form_focus" type="text" placeholder="Full Name:">
+                                    <label  *ngIf="dataService.form.get('name').touched && dataService.form.get('name').errors" class="label-messages-errors wv_form_focus">Tên không hợp lệ</label>
                                 </div>
                                 <!--//==Billings Input Field==//-->
                                 <div class="col-md-12 form-group">
-                                    <input class="wv_form_focus" type="text" placeholder="Street Address:">
+                                    <input formControlName='email' class="wv_form_focus" type="email" id="exampleInputEmail" placeholder="Email:">
+                                    <label  *ngIf="dataService.form.get('email').touched && dataService.form.get('email').errors" class="label-messages-errors wv_form_focus">Email không định dạng</label>    
                                 </div>
-                                <!--//==Billings Input Field==//-->
-                                <div class="col-md-6 form-group">
-                                    <input class="wv_form_focus" type="text" placeholder="Town/City:">
-                                </div>
-                                <!--//==Billings Input Field==//-->
-                                <div class="col-md-6 form-group">
-                                    <input class="wv_form_focus" type="text" placeholder="Postcode/zip:">
-                                </div>
-                                <!--//==Create Account Input Field==//-->
                                 <div class="col-md-12 form-group">
-                                    <div class="wv_widget wv_checkout_check">
-                                        <input type="checkbox" class="grey" name="pink" id="grey">
-                                        <label for="grey">Create an account?</label>
-                                    </div>
+                                    <input formControlName='phone' class="wv_form_focus" type="text" placeholder="Phone Number:">
+                                    <label *ngIf="dataService.form.get('phone').touched && dataService.form.get('phone').errors" class="label-messages-errors wv_form_focus">Số điện thoại không hợp lệ</label>    
                                 </div>
+                                <!--//==Billings Input Field==//-->
+                                <div class="col-md-12 form-group">
+                                    <input formControlName='address' class="wv_form_focus" type="text" placeholder="Street Address:">
+                                    <label *ngIf="dataService.form.get('address').touched && dataService.form.get('address').errors" class="label-messages-errors wv_form_focus">Địa chỉ không được để trống</label>    
+                                </div>
+                                
                             </div>
                             <!--//==Billings Form Start==//-->	
-                        </div>
-                        <div class="col-sm-6 col-md-6 marT30">
-                            <!--//== Section Heading Start ==//-->
-                            <div class="left-title">
-                                <h2>Shipping details <span class="heading-border"></span></h2>
-                                <div class="clear"></div>
-                            </div>
-                            <!--//== Section Heading End ==//-->
-                            <!--//==Shipping Form Start==//-->							
-                            <div class="row">
-                                <!--//==Shipping Input Field==//-->
-                                <div class="col-md-6 form-group">
-                                    <input class="wv_form_focus" type="text" placeholder="First Name:">
-                                </div>
-                                <!--//==Shipping Input Field==//-->
-                                <div class="col-md-6 form-group">
-                                    <input class="wv_form_focus" type="text" placeholder="Last Name:">
-                                </div>
-                                <!--//==Shipping Input Field==//-->
-                                <div class="col-md-12 form-group">
-                                    <input class="wv_form_focus" type="text" placeholder="Company Name:">
-                                </div>
-                                <!--//==Shipping Input Field==//-->
-                                <div class="col-md-6 form-group">
-                                    <input class="wv_form_focus" type="email" id="exampleInputEmail1" placeholder="Email:">
-                                </div>
-                                <!--//==Shipping Input Field==//-->
-                                <div class="col-md-6 form-group">
-                                    <input class="wv_form_focus" type="number" placeholder="Phone Number:">
-                                </div>
-                                <!--//==Shipping Input Field==//-->
-                                <div class="col-md-12 form-group">
-                                    <input class="wv_form_focus" type="text" placeholder="Street Address:">
-                                </div>
-                                <!--//==Shipping Input Field==//-->
-                                <div class="col-md-6 form-group">
-                                    <input class="wv_form_focus" type="text" placeholder="Town/City:">
-                                </div>
-                                <!--//==Shipping Input Field==//-->
-                                <div class="col-md-6 form-group">
-                                    <input class="wv_form_focus" type="text" placeholder="Postcode/zip:">
-                                </div>
-                                <!--//==Shipping Input Field==//-->
-                                <div class="col-md-12 form-group">
-                                    <textarea name="contact_message" class="textarea-message wv_form_focus wv_checkout_tarea" placeholder="Message:" rows="4"></textarea>							
-                                </div>
-                                <!--//==Form Submit==//-->								
-                                <div class="col-md-12 form-group">
-                                    <button type="submit" class="theme-button col-xs-12">Save Detail</button>
-                                </div>
-                            </div>
-                            <!--//==Shipping Form End==//-->	
                         </div>
                     </form>
                     <!--//==Billings and Shipping Form End==//-->	
@@ -192,7 +124,7 @@
                                 </div>
                             </div>
                             <div class="wv_totaling">
-                                <button type="submit" class="theme-button col-xs-12 marT30">Place Order</button>
+                                <button  (click)="submit()"class="theme-button col-xs-12 marT30">Place Order</button>
                             </div>
                             <div class="clear"></div>
                         </div>

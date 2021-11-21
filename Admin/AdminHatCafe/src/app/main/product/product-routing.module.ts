@@ -5,6 +5,7 @@ import { CreateComponent } from './create/create.component';
 import { IndexComponent } from './index/index.component';
 import { ProductComponent } from './product.component';
 import { UpdateComponent } from './update/update.component';
+// import { UpdateComponent } from ''
 
 const routes: Routes = [
   {
@@ -19,9 +20,18 @@ const routes: Routes = [
         component : CreateComponent,
       },
       { 
-        path:"update/:categories_slug/:id",
+        path:"update/:product_slug/:id",
         component : UpdateComponent,
-      }]
+      },
+      { 
+        path:"update",
+        component : UpdateComponent,
+      },
+      {
+        path:"**",
+        component : IndexComponent,
+      }
+    ]
   }
 ];
 

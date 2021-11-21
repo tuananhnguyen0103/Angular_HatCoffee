@@ -37,6 +37,10 @@ export class Menu{
                     name: "Thêm sản phẩm",
                     route: "/main/product/create",
                 },
+                {
+                    name: "Cập nhật sản phẩm",
+                    route: "/main/product/index",
+                },
             ]
         }
     ]

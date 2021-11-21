@@ -6,6 +6,7 @@ import { CreateComponent } from './create/create.component';
 import { IndexComponent } from './index/index.component';
 import { UpdateComponent } from './update/update.component';
 import { FormsModule } from '@angular/forms';
+import { ImgurApiService }from 'src/app/core/services/imgur-api.service';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     ProductRoutingModule,
     NgxPaginationModule,
     FormsModule
-  ]
+  ],
+  // providers:[ImgurApiService]
 })
 export class ProductModule { }

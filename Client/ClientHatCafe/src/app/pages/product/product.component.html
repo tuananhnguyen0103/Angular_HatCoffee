@@ -26,7 +26,7 @@
                     <!--Thumbnail Column-->
                     <div class="carousel-column col-lg-6 col-md-6 col-sm-5 col-xs-12">
                         <div class="wa-product-main-image marB20">
-                            <a href="assets/img/dishes/dish-detail.jpg" class="fancybox" data-fancybox-group="group" title="Roasted Chicken"> <img src="assets/img/dishes/dish-detail.jpg" alt=""> </a>
+                            <a  class="fancybox" data-fancybox-group="group" title="Roasted Chicken"> <img src="{{product_image}}" alt=""> </a>
                         </div>
                     </div>
                     <!--Content Column-->
@@ -34,10 +34,9 @@
                         <div class="outer wow fadeInRight">
                             <div class="title-box">
                                 <div class="inner marB30">
-                                    <h2>Roasted Chicken.</h2>
-                                    <span class="price">								
-                                    $100
-                                    <del>$200</del>
+                                    <h2> {{product_name}}</h2>
+                                    <span class="price">
+                                        {{product_prices | number}} VNĐ
                                     </span>
                                     <ul class="ratings">
                                         <li><a href="#"><i class="fa fa-star"></i></a></li>
@@ -47,44 +46,24 @@
                                         <li><a href="#"><i class="fa fa-star-half-o"></i></a></li>
                                     </ul>
                                     <p class="availability in-stock"><strong>Availability:</strong> <span>In stock</span></p>
-                                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies .</p>
-                                    <p>It has survived not only five centuries, but also the leap into ele ctronic typesetting, remaining essentially un changed The industry's standard dummy text ever 
-                                        since.
-                                    </p>
+                                    <p>{{product_description}}</p>
                                 </div>
                                 <div class="clear"></div>
                                 <!--Options-->
                                 <div class="prod-options marB10">
                                     <div class="clearfix">
-                                        <div class="col-md-2 col-sm-3 padL0">
+                                        <div class="col-md-7 col-sm-3 padL0">
                                             <div class="form-group">
-                                                <label><strong>Qty :</strong> </label>
+                                                <label><strong>Quanty :</strong> </label>
                                                 <div class="clear"></div>
-                                                <input type="number" name="qty" value="2" max="10" min="0" placeholder="">
+                                                <input (click)="changeQuanty()" type="number" [(ngModel)]="product_quanty" name="qty"  max="10" min="0" placeholder="">
                                             </div>
                                         </div>
                                         <div class="col-md-5 col-sm-4 padL0">
                                             <div class="form-group">
-                                                <label><strong>Pack type :</strong> </label>
+                                                <label><strong>Total :</strong> </label>
                                                 <div class="clear"></div>
-                                                <select name="sel-color">
-                                                    <option>Select Pack type</option>
-                                                    <option>Full</option>
-                                                    <option>Hlaf</option>
-                                                    <option>Quater</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-5 col-sm-4 padL0">
-                                            <div class="form-group">
-                                                <label><strong>Gravy Type :</strong> </label>
-                                                <div class="clear"></div>
-                                                <select name="sel-color">
-                                                    <option>Select Gravy</option>
-                                                    <option>Dry</option>
-                                                    <option>Liquid</option>
-                                                    <option>Semi Liquid</option>
-                                                </select>
+                                                <input (click)="changeQuanty()" disabled type="number" [(ngModel)]="product_total" name="qty"  max="10" min="0" placeholder="">
                                             </div>
                                         </div>
                                         <div class="form-group col-sm-12 padL0 quantity">
@@ -104,7 +83,17 @@
                             </div>
                             <!--Add-->
                             <div class="add-options">
-                                <button type="button" class="theme-button">Order Now</button>
+                                <!-- <button type="button" class="theme-button" (click)="addToCartInProductDetail()">Order Now</button> -->
+                                <button type="button"
+
+                                                [attr.data-id]='product_id' 
+                                                [attr.data-images]='product_image' 
+                                                [attr.data-name]='product_name' 
+                                                [attr.data-prices]='product_prices'
+                                                [attr.data-quantity]='product_quanty' 
+            
+                                                
+                                class="theme-button marT10 cart-add theme-button">Order Now</button>
                                 <button type="button" class="theme-button"><span class="fa fa-heart"></span></button>
                             </div>
                         </div>
