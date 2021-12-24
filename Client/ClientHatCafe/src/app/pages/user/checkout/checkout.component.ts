@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from 'src/app/core/services/data.service';
 import { CartService } from 'src/app/core/services/cart.service';
-
+import {formatDate} from '@angular/common';
+import { Router } from '@angular/router';
 declare const  Cart:any
 @Component({
   selector: 'app-checkout',
@@ -14,6 +15,7 @@ export class CheckoutComponent implements OnInit {
   constructor(
     public dataService:DataService,
     private cartService:CartService,
+    private router: Router,
   ) { }
   cart:any;
   
@@ -25,6 +27,7 @@ export class CheckoutComponent implements OnInit {
        totalCart += this.cartService.GetCart()[index].bill_details_prices*this.cartService.GetCart()[index].bill_details_quantity;
       
     }
+    
     var data = {
       cart:this.cartService.GetCart(),
       userdata: {
@@ -32,7 +35,8 @@ export class CheckoutComponent implements OnInit {
         bill_customer_name: this.dataService.form.value.name,
         bill_customer_email: this.dataService.form.value.email,
         bill_customer_address: this.dataService.form.value.address,
-        bill_customer_phone_number: this.dataService.form.value.phone 
+        bill_customer_phone_number: this.dataService.form.value.phone ,
+        bill_sale_day: formatDate(new Date(), 'yyyy/MM/dd', 'en'),
       }
     }
     console.log(data.userdata);
@@ -40,6 +44,8 @@ export class CheckoutComponent implements OnInit {
     this.dataService.POST('api/Bill/create-object',data).subscribe(
       (res:any)=>{
         console.log(res)
+        Cart.empty()
+        this.router.navigate([''])
     },(error:any)=>{
       console.log(error)
     }

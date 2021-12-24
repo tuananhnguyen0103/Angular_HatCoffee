@@ -24,9 +24,9 @@
             <div class="col-md-12 col-sm-12">
                 <!--//==Section Heading Start==//-->
                 <div class="centered-title">
-                    <h2>Your Orders <span class="heading-border"></span></h2>
+                    <h2>Giỏ hàng của bạn <span class="heading-border"></span></h2>
                     <div class="clear"></div>
-                    <em>doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo <br>inventore veritatis et quasi architecto beatae</em>
+                    <em>Cảm ơn bạn đã tin tưởng chúng tôi</em>
                 </div>
                 <!--//==Section Heading End==//-->
                 <div class="clear"></div>
@@ -34,37 +34,39 @@
                 <div class="hidden-xs">
                     <div class="col-md-2 col-sm-2 grey-bg">
                         <div class="order-data text-center pad15">
-                            <strong>Item</strong>
+                            <strong>Hình ảnh</strong>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-2 grey-bg">
                         <div class="order-data text-center pad15">
-                            <strong>Dish</strong>
+                            <strong>Tên sản phẩm</strong>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-2 grey-bg">
                         <div class="order-data  text-center pad15">
-                            <strong>price</strong>
+                            <strong>Giá</strong>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-2 grey-bg">
                         <div class="order-data text-center pad15">
-                            <strong>Quantity</strong>
+                            <strong>Số lượng</strong>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-2 grey-bg">
                         <div class="order-data text-center pad15">
-                            <strong>Total</strong>
+                            <strong>Tổng</strong>
                         </div>
                     </div>
                     <div class="col-md-2 col-sm-2 grey-bg">
                         <div class="order-data text-center pad15">
-                            <strong>Status</strong>
+                            <strong>Xóa</strong>
                         </div>
                     </div>
                 </div>
                 <!--//==Order Table titles End==//-->
                 <!--//==Order Table Row ==//-->
+
+                <!--//==Hiện thị giỏ hàng ==//-->
                 <div class = "cart-line-items">
                     
                 </div>
@@ -72,88 +74,14 @@
             </div>
         </div>
         <div class="cart-is-empty">Giỏ hàng của bạn đang trống</div>
-    </div>
-</section>
-<!--//==Order Section End==//-->
-<!--//== Order Price Section Start ==//-->
-<section class="cart-page grey-bg padTB100">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 col-sm-12">
-                <!--//== Section Heading Start ==//-->
-                <div class="centered-title">
-                    <h2>Price Calculation <span class="heading-border"></span></h2>
-                    <div class="clear"></div>
-                    <em>doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo <br>inventore veritatis et quasi architecto beatae</em>
-                </div>
-                <!--//== Section Heading Start ==//-->
-            </div>
-            <!--//== Apply Coupon Section Start ==//-->
-            <div class="col-xs-12 col-sm-6 col-md-5 wv_shipping_outer">
-                <div class="wv_shipping responsive_coupon">
-                    <div class="wv_subtotaling marB20">
-                        <div class="col-xs-12 col-md-12  wv_subtotal_left textL">
-                            <p>Enter Coupon Code</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <form class="contact-form">
-                            <!--//==Contact Input Field==//-->
-                            <div class="col-md-12 form-group wv_form_field marB30">
-                                <input class="wv_form_focus" type="text" placeholder="Example 'B589276A'">
-                            </div>
-                            <div class="col-md-12 wv_form_field">
-                                <button type="submit" class="theme-button col-xs-12 marT0">apply code</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!--//== Apply Coupon Section End ==//-->
-            <!--//== Price Calculation Section Start ==//-->
-            <div class="col-xs-12 col-sm-6 col-md-7 wv_subtotal">
-                <div class="wv_shipping">
-                    <div class="wv_subtotaling">
-                        <div class="col-xs-6 col-md-6 wv_subtotal_left textL">
-                            <p>subtotal</p>
-                        </div>
-                        <div class="col-xs-6 col-md-6 wv_subtotal_right textR cart-subtotal_l">
-                            <p class="cart-subtotal_l"></p>
-                        </div>
-                    </div>
-                    <div class="wv_subtotaling">
-                        <div class="col-xs-6 col-md-6 wv_subtotal_left textL">
-                            <p>Deduction</p>
-                        </div>
-                        <div class="col-xs-6 col-md-6 wv_subtotal_right textR">
-                            <p>-$15.00</p>
-                        </div>
-                    </div>
-                    <div class="wv_totaling">
-                        <div class="col-xs-6 col-md-6 wv_total_left textL">
-                            <p>Total</p>
-                        </div>
-                        <div class="col-xs-6 col-md-6 wv_total_right textR">
-                            <p>$325.00</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <a  routerLink="index">
-                            <div class="col-xs-12 col-md-6 wv_checkout wv_form_field">							   
-                                <a  routerLink="checkout" class="theme-button col-xs-12 marT0"  >checkout</a>
-                            </div>
-                        </a>
-                        
-                        <a  routerLink="index">
-                            <div class="col-xs-12 col-md-6 wv_checkout wv_form_field1 responsive_field1">
-                                <a  routerLink="index" class="theme-button col-xs-12 marT0">continue ordeing </a>
-                            </div>
-                        </a>
-                        
-                    </div>
-                </div>
-            </div>
-            <!--//== Price Calculation Section End ==//-->
+        <div class="check-out-div">
+            <h2 class="btn-in-cart order-data text-center pad15">Tổng tiền</h2>
+            <h2 class="cart-subtotal_l btn-in-cart order-data text-center pad15" > </h2>
         </div>
+        <div class="check-out-div">
+            <a routerLink="/index" class="btn btn-success btn-in-cart" id="check-out-cart">Tiếp tục mua sắm </a>
+            <a routerLink="/checkout" class="btn btn-success btn-in-cart" id="check-out-cart">Đặt hàng</a> 
+        </div>
+        
     </div>
 </section>

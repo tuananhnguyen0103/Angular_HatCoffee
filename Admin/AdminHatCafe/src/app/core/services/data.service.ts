@@ -5,7 +5,7 @@ import { SystemConstants } from '../common/System';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Observable, throwError,  } from 'rxjs';
 import { NotificationService } from './notification.service';
-
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,7 @@ export class DataService {
     private http: HttpClient,
     private auth : AuthenticationService,
     private noti: NotificationService,
+    private formBuilder :FormBuilder,
   ) { }
   private httpOptions = {
     headers : new HttpHeaders({
@@ -24,6 +25,11 @@ export class DataService {
     }),
   }
 
+
+  form = this.formBuilder.group({
+    email:["",[Validators.required,Validators.maxLength(100)]],
+    password:["",[Validators.required,Validators.maxLength(100)]]
+  })
   GET(path: any){
     return this.http.get(`${SystemConstants.BASE_API}/${path}`).pipe(
       catchError(this.handleError),

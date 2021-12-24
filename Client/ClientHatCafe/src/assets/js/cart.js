@@ -165,7 +165,14 @@ Cart.initJQuery = function() {
          </div>
      </div>
  </div>`
+    var cartItemInCheckOut = `<div class="col-xs-6 col-md-6 wv_subtotal_left textL">
+                  <span>#{this.bill_details_name} x #{this.bill_details_quantity}</span>
+              </div>
+              <div class="col-xs-6 col-md-6 wv_subtotal_right textR">
+                  <span>#{Cart.linePrice(Cart.indexOfItem(this.bill_details_id_product))} #{Cart.currency}</span>
+          </div>`
       Cart.lineItemTemplate = cartItem;
+      Cart.InCheckOut = cartItemInCheckOut
 
   
   $(document).on('click', '.cart-add', function(e) {
@@ -200,10 +207,14 @@ Cart.initJQuery = function() {
     if (Cart.items.length>0) {
       var template = Cart.templateCompiler(Cart.lineItemTemplate);
       var lineItems = "";
+      var checkOutlineItems = "";
+      var templateCheckout = Cart.templateCompiler(Cart.InCheckOut);
       for (var i = 0; i<Cart.items.length; i++) {
         lineItems += template(Cart.items[i]);
+        checkOutlineItems+=templateCheckout(Cart.items[i])
       }
       $('.cart-line-items').html(lineItems);
+      $('.cart-line-items-check-out').html(checkOutlineItems);
       $('.cart-table').show();
       $('.cart-is-empty').hide();
     } else {

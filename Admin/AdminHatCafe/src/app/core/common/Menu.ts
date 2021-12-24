@@ -42,6 +42,25 @@ export class Menu{
                     route: "/main/product/index",
                 },
             ]
+        }, 
+        {
+            name: "Quản lý đơn hàng",
+            icon: "fas fa-book",
+            route: "/main/bill/index",
+            children:[
+                {
+                    name: "Danh sách đơn hàng",
+                    route: "/main/bill/index",
+                },
+                // {
+                //     name: "Thêm sản phẩm",
+                //     route: "/main/product/create",
+                // },
+                // {
+                //     name: "Cập nhật sản phẩm",
+                //     route: "/main/product/index",
+                // },
+            ]
         }
     ]
 }

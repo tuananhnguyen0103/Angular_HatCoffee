@@ -85,21 +85,9 @@
                                 </div>
                             </div>
                             <div class="wv_subtotaling wv_checkout_subtotal1 padT10">
-                                <div class="col-xs-6 col-md-6 wv_subtotal_left textL">
-                                    <span>Dish Name Here x 1</span>
-                                </div>
-                                <div class="col-xs-6 col-md-6 wv_subtotal_right textR">
-                                    <span>$170.00</span>
-                                </div>
-                                <div class="clear"></div>
-                                <div class="col-xs-6 col-md-6 wv_subtotal_left textL">
-                                    <span>Dish Name Here x 1</span>
-                                </div>
-                                <div class="col-xs-6 col-md-6 wv_subtotal_right textR">
-                                    <span>$170.00</span>
-                                </div>
+                                <div class="cart-line-items-check-out"></div>
                             </div>
-                            <div class="wv_subtotaling">
+                            <!-- <div class="wv_subtotaling">
                                 <div class="col-xs-6 col-md-6 wv_subtotal_left textL">
                                     <p>subtotal</p>
                                 </div>
@@ -114,17 +102,17 @@
                                 <div class="col-xs-6 col-md-6 wv_subtotal_right textR">
                                     <p>-$15.00</p>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="wv_totaling">
                                 <div class="col-xs-6 col-md-6 wv_total_left textL">
                                     <p>Total</p>
                                 </div>
-                                <div class="col-xs-6 col-md-6 wv_total_right textR">
-                                    <p>$325.00</p>
+                                <div class="col-xs-6 col-md-6 wv_total_right textR cart-subtotal_l">
+                                    <p></p>
                                 </div>
                             </div>
                             <div class="wv_totaling">
-                                <button  (click)="submit()"class="theme-button col-xs-12 marT30">Place Order</button>
+                                <button [disabled]="!dataService.form.valid"  (click)="submit()"class="theme-button col-xs-12 marT30">Place Order</button>
                             </div>
                             <div class="clear"></div>
                         </div>

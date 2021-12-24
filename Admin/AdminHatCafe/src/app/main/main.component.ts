@@ -64,6 +64,6 @@ export class MainComponent implements OnInit {
     this.authentication.Logout();
     this.$('.btn-close-modal').click();
     this.notificationService.alertSuccessMS(MessageConstants.MSG,MessageConstants.LOGOUT_OK_MSG)
-    this.router.navigate(['/auth/login'])
+    this.router.navigate(['/login'])
   }
 }

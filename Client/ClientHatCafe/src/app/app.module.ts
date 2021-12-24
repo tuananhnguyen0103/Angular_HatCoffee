@@ -12,6 +12,7 @@ import { PagesComponent } from './pages/pages.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ReactiveFormsModule, FormGroup ,FormsModule } from '@angular/forms';
 import { CheckoutComponent } from './pages/user/checkout/checkout.component';
+import { CartComponent } from './pages/user/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CheckoutComponent } from './pages/user/checkout/checkout.component';
     MenuComponent,
     ProductComponent,
     PagesComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    CartComponent
   ],
   imports: [
     HttpClientModule,

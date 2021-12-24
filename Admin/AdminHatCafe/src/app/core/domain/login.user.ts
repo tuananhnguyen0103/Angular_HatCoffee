@@ -5,16 +5,16 @@
 export class LoginUser{
     constructor(
         access_token: string, 
-        UserId: string, 
-        Email: string, 
+        staff_id: string, 
+        staff_email: string, 
         Name: string, 
         Avatar: string, 
         Address: string,
         PhoneNumber: string
         ) {
         this.access_token = access_token;
-        this.UserId = UserId;
-        this.Email = Email;
+        this.staff_id = staff_id;
+        this.staff_email = staff_email;
         this.Name = Name;
         this.Avatar = Avatar;
         this.Address = Address;
@@ -22,8 +22,8 @@ export class LoginUser{
     }
 
     public access_token: string
-    public UserId: string;
-    public Email: string;
+    public staff_id: string;
+    public staff_email: string;
     public Name: string;
     public Avatar: string;
     public Address: string;
