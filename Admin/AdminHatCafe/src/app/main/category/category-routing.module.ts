@@ -14,6 +14,10 @@ const routes: Routes = [
         component : IndexComponent,
       },
       { 
+        path:"",
+        component : IndexComponent,
+      },
+      { 
         path:"create",
         component : CreateComponent,
       },

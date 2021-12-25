@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
         console.log(staff);
         if(this.AuthenticatorService.isAuthenticated()){
           this.NotificationService.alertSuccessMS("Thong bao","Ban thanh cong")
-          this.router.navigate(['/main/category'])
+          this.router.navigate(['/main'])
         }
         else{
           this.NotificationService.alertWarnMS("Thong bao","Ban dien khong dung")

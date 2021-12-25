@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { DataService } from 'src/app/core/services/data.service';
 import { CartService } from 'src/app/core/services/cart.service';
+import {NotificationsService} from 'src/app/core/services/notifications.service'
+
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -11,8 +13,8 @@ export class IndexComponent implements OnInit {
 
   constructor(
     private dataService:DataService,
-    private cartService:CartService
-
+    private cartService:CartService,
+    private notification:NotificationsService,
   ) { }
   numberPages: number = 1;
   collection: any[] = [];
@@ -31,15 +33,19 @@ export class IndexComponent implements OnInit {
   handlePageChange(event) {
     this.numberPages = event;
   }
-  addToCart(item:any){
-    this.itemCart = {
-      id : item.product_id,
-      name: item.product_name,
-      quantity: 1,
-      prices: item.product_prices,
-      total : item.product_prices,
-      images: item.product_image
-    }
-    this.cartService.AddToCart(this.itemCart);
+  addToCart(){
+    this.notification.alertSuccessMS("thông báo",'Bạn đã thêm thành công .')
+    console.log("Hay quá các bạn");
+    // this.itemCart = {
+    //   id : item.product_id,
+    //   name: item.product_name,
+    //   quantity: 1,
+    //   prices: item.product_prices,
+    //   total : item.product_prices,
+    //   images: item.product_image
+    // }
+
+    // this.cartService.AddToCart(this.itemCart);
+    
   }
 }

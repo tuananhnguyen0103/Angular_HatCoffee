@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
-
+import {NotificationsService} from './notifications.service';
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  constructor() { }
+  constructor(
+    private notification:NotificationsService,
+  ) { }
   CartJSONDatas:any = [
   ]
   ok:any = true;
@@ -23,6 +25,8 @@ export class CartService {
       this.CartJSONDatas.push(data);
       console.log(this.CartJSONDatas);
       localStorage.setItem("cart-items", JSON.stringify(this.CartJSONDatas));
+      this.notification.alertSuccessMS("thông báo",'Bạn đã thêm thành công .')
+      console.log("Hay quá")
     }
     else{ 
       this.GetCart();
@@ -45,6 +49,8 @@ export class CartService {
         console.log(this.CartJSONDatas)
         localStorage.setItem("cart-items", JSON.stringify(this.CartJSONDatas));
       }
+      this.notification.alertSuccessMS("thông báo",'Bạn đã thêm thành công .')
+      console.log("Hay quá")
     }
   }
   ShowCart(){

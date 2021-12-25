@@ -41,13 +41,23 @@
                             <!-- <a [routerLink]="['/main/category/update/']+item.categories_slug+['/']+item.categories_id"> -->
                             <a href="">
                                 <div data-toggle="modal" data-target="#exampleModal" class="btn-trash mr-2">
-                                    <i class="btn btn-primary far fa-edit"></i>
+                                    <!-- <i class="btn btn-primary fas fa-check"></i> -->
+                                    <i class="btn btn-success fas fa-check"></i>
                                 </div>
                             </a>
+                            <a href="">
+                                <div data-id="" data-toggle="modal" (click)="GetId(item.bill_id)"  data-target="#delete-cat-modal" class="btn-delete" href="">
+                                    <i class="btn btn-primary fas fa-truck"></i>
+                                    <!-- <i class="fas fa-truck-moving"></i> -->
+                                </div>
+                            </a>
+                            <a href="">
                                 <div data-id="" data-toggle="modal" (click)="GetId(item.bill_id)"  data-target="#delete-cat-modal" class="btn-delete" href="">
                                     <i class="btn btn-danger fas fa-trash-alt"></i>
+                                    <!-- <i class="fas fa-truck-moving"></i> -->
                                 </div>
-                            
+                            </a>    
+                                <!-- <i class=""></i> -->
                         </td>
                       </tr>
                     </tbody>
